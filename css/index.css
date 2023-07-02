@@ -1,16 +1,7 @@
-	@font-face {
-    font-family: 'Rajdhani';
-    src: url(../Font/Rajdhani/Rajdhani-Medium.ttf) format('OpenType');
-}
-
-@font-face {
-    font-family: 'Space Grotesk';
-    src: url(../Font/Space_Grotesk/SpaceGrotesk-Bold.ttf) format('OpenType');
-}
-
-@font-face {
-    font-family: 'Space Grotesk';
-    src: url(../Font/Space_Grotesk/SpaceGrotesk-Regular.ttf) format('OpenType');
+/* body */
+body{
+	padding: 0;
+	margin: 0;
 }
 
 *{
@@ -44,6 +35,8 @@ a
 	font-family: 'Rajdhani';
 	font-size: 22px;
 }
+
+/* debut sous-conteneur */
 .sous-conteneur {
     width: 100%;
 }
@@ -191,7 +184,7 @@ nav.lien ul li:hover
 	color: #ffff00;
 }
 
-
+/* debut BATMAN AU CINEMA */
 .sous-conteneur1
 {
 	background-color: #000000;
@@ -211,8 +204,6 @@ nav.lien ul li:hover
     position: relative;
     z-index: 2;
 }
-
-
 
 .cont-bat-cinema
 {
@@ -286,7 +277,6 @@ nav.lien ul li:hover
 	font-size: 10px;
 }
 
-
 .cacheParDefaut_hero,
 .cacheParDefaut_m
 {
@@ -294,48 +284,23 @@ nav.lien ul li:hover
 	transition: transform 1s ease-in-out;
 }
 
-
+/* debut nemesis */
 .sous-conteneur2
 {
-    height: 510px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
+	background-color: #000000;
+    height: 1050px;
 }
 
 .under-conteneur2
 {
 	color: #ffffff;
     width: 85%;
-    height: 515px;
+    height: 910px;
     border: 4px solid rgba(255, 255, 255, .20);
     border-bottom: none;
     border-top: none;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    top: -79vh;
-}
-
-.first-slide
-{
-	margin-left: 0%;
-}
-.sous-conteneur3
-{
-	background-color: #000000;
-    height: 2050px;
-}
-
-.under-conteneur3
-{
-	color: #ffffff;
-    width: 85%;
-    height: 2050px;
-    border: 4px solid rgba(255, 255, 255, .20);
-    border-bottom: none;
-    border-top: none;
-    margin: 0 auto;
+    padding-top: 11%;
     position: relative;
     z-index: 2;
 }
@@ -368,12 +333,81 @@ nav.lien ul li:hover
 	justify-content: space-between;
 }
 
-.multimedia
+/* debut ALLIES */
+.sous-conteneur3
 {
-	margin-top: 10%;
+	background-color: #000000;
+    height: 3050px;
+}
+.under-conteneur3
+{
+	color: #ffffff;
+    width: 85%;
+    height: 3050px;
+    border: 4px solid rgba(255, 255, 255, .20);
+    border-bottom: none;
+    border-top: none;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+.image-alliés
+{
+	margin-top: 8%;
+	width: 100%;
+}
+
+.cont-alliés
+{
+	padding-top: 10%;
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.cont-alliés p 
+{
+	width: 80%;
+	text-align: justify;
+	font-size: 1.2em;
+}
+
+.image-alliés
+{
+	margin-top: 8%;
+	width: 100%;
+}
+.cont-image-alliés
+{
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* debut JUSTICE */
+.sous-conteneur31{
+	margin-top: 20%;
+}
+.under-conteneur31{
+	margin-left: 6%;
+}
+
+.image-justice{
+	margin-left: -7%;
+	margin-right: -1%;
+}
+
+/* debut multimedia */
+.multimedia
+{
+	margin-top: 10%;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.multimedia h1{
+	margin-left: 6%;
 }
 .cont-mult-images
 {
@@ -398,10 +432,12 @@ div.sous-mult-image
 
 .btn-slide-left
 {
-	margin-right: 10%;
 	cursor: pointer;
 }
 
+.btn-slide-left img{
+	margin-left: 10%;
+}
 
 .mult-image-right
 {
@@ -421,39 +457,28 @@ div.sous-mult-image
 	font-size: 11px;
 	text-align: left;
 }
-.big-image
-{
-	margin-top: 10%;
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
+
+/* bande annonce */
+
+.bande1 img:hover{
+    color: whitesmoke;
+    box-shadow: 2px 2px 4px whitesmoke;
 }
-.sous-big-image
-{
-	display: flex;
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
+
+.bande1{
+	margin-top: -50%;
+    display: flex;
+    justify-content: center;
+    margin-left: 9%;
+	margin-bottom: 13%;
 }
-.sous-big-image video
-{
-	width: 100%;
-	height: 100%;
-	display: block;
-}
-.sous-big-image
-{
-	transform: scale(0);
-}
-.first-video
-{
-	margin-left: 0%;
-}
+
+/* debut pop-up */
 .sous-conteneur4
 {
 	background-color: #19587D;
     height: 950px;
-    margin-top: -2%;
+    margin-top: -10%;
 }
 .under-sous-conteneur4
 {
@@ -465,6 +490,8 @@ div.sous-mult-image
     border-top: none;
     margin: 0 auto;
 }
+
+/* debut formulaire */ 
 .formulaire
 {
 	width: 60%;
@@ -552,7 +579,7 @@ div.submit
 	justify-content: center;
 }
 
-
+/* debut footer */
 .sous-conteneur5
 {
 	background-color: #000000;
@@ -678,8 +705,18 @@ footer div .img-text p
   	margin-left: 10px;
   }
 
-  
-body{
-	padding: 0;
-	margin: 0;
-}
+  /* donts */
+	@font-face {
+		font-family: 'Rajdhani';
+		src: url(../Font/Rajdhani/Rajdhani-Medium.ttf) format('OpenType');
+	}
+	
+	@font-face {
+		font-family: 'Space Grotesk';
+		src: url(../Font/Space_Grotesk/SpaceGrotesk-Bold.ttf) format('OpenType');
+	}
+	
+	@font-face {
+		font-family: 'Space Grotesk';
+		src: url(../Font/Space_Grotesk/SpaceGrotesk-Regular.ttf) format('OpenType');
+	}
