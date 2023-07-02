@@ -1,157 +1,115 @@
-$(document).ready(function(){
-	animationBoutons();
-	animationTitre();
-	animationSousHeaderText();
-	zoomLesImage();
-	showMessage();
+const form = document.getElementById("form");
+let tableauResults = [];
+var reponse = ["sphinx","psychiatre","piece",
+                "gothamcity","mikaelkeaton","joker",
+                "thomasmartha","heathledger","1940",
+                "huntress","epouvantail","turquie",
+                "andywarhol","rasalghul","zoe"];
+
+var checkRes = [];
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    var val = document.querySelectorAll('input:checked');
+    for (let i = 0; i < val.length; i++) {
+        
+        tableauResults.push(val[i].value);
+    }
+
+    verifcationRes(tableauResults);
+    tableauResults=[];
+    afficheRes(checkRes);
+    checkRes=[];
+
 });
-	animationContenu();
-	scrollerLogosReseauSc();
-	zoomCartePersonnage();
-	contenuAdv();
-	contenuVideo();
-	setInterval(SliderImagePre,3000);
-	
 
 
-
-	function animationBoutons()
-	{
-		$(".bouton").mouseover(function(){
-			$(this).css({background: 'linear-gradient(to right,rgba(255, 255, 255, 1),rgba(255,0,0, 1))'});
-		});
-		$(".bouton").mouseout(function(){
-			$(this).css({background: 'linear-gradient(to right,rgba(255, 255, 255, .40),rgba(255,0,0, .40))'})
-		})
-	}
-
-	scrollerLogosReseauSc();
-	function scrollerLogosReseauSc()
-	{
-		var logos = document.querySelector(".logo-reseaux-sc");
-		window.addEventListener("scroll",()=>{
-		const {scrollTop} = document.documentElement;
-		if(scrollTop>320)
-			logos.style.top=scrollTop+"px";
-		});
-	}
-
-function animationTitre()
+function verifcationRes(tabs)
 {
-	$(".titre").css({left:'0px',transition:'left 0.9s ease-in-out'});
-	$("p").css({display:"none"});
-	$("p").fadeIn(5000);
+    for(let i=0;i<tabs.length;i++)
+    {
+        if(tabs[i]==reponse[i])
+        {
+            checkRes.push(true);
+        }
+        else
+        {
+            checkRes.push(false);
+        }
+    }
 }
 
-function animationSousHeaderText()
+function afficheRes(tabsVer)
 {
-	$(".sous-header-text").css({left:'34%',transition:'left 1s ease-in-out'});
+    const nbFautes = tabsVer.filter(elem => elem !== true).length;
+    var note=15-nbFautes;
+    let score = document.querySelector("#score h3");
+    let divScore = document.querySelector("#score");
+    if(nbFautes==0){
+        score.textContent="Félicitation , Vous avez bien terminé le quiz, votre score 15/15 !";
+        divScore.style.left="0%";
+        divScore.style.transition="left 1s ease-in-out";
+               
+    }
+    else if(nbFautes>=8){
+        score.textContent="Faites un effort, votre score "+note+"/15 !";
+        divScore.style.left="0%";
+        divScore.style.transition="left 1s ease-in-out";
+    }
+    else if(nbFautes<8)
+    {
+        score.textContent="Presque , faites encore un effort "+note+"/15 !";
+        divScore.style.left="0%";
+        divScore.style.transition="left 1s ease-in-out";
+    }
+
 }
 
-function animationContenu()
+cachePopBoxGame();
+function cachePopBoxGame()
 {
-	window.addEventListener("scroll",()=>{
-	var cachePardefautHero = document.querySelectorAll(".cacheParDefaut_hero");
-	var cachePardefautM = document.querySelectorAll(".cacheParDefaut_m");
-	const {scrollTop} = document.documentElement;
-	if(scrollTop>900){
-		for(let i=0;i<cachePardefautHero.length;i++){
-			cachePardefautHero[i].style.transform="scale(1)";
-			cachePardefautHero[i].style.transition="transform .5s ease-in-out";
-		}
-	}
-	else if(scrollTop<900){
-		for(let i=0;i<cachePardefautHero.length;i++){
-			cachePardefautHero[i].style.transform="scale(0)";
-			cachePardefautHero[i].style.transition="transform .5s ease-in-out";
-		}
-	}
-	});
-	
-}
-
-function contenuAdv()
-{
-	window.addEventListener("scroll",()=>{
-	var cachePardefautM = document.querySelectorAll(".cacheParDefaut_m");
-	const {scrollTop} = document.documentElement;
-	
-	if(scrollTop>2360){
-		for(let i=0;i<cachePardefautM.length;i++){
-			cachePardefautM[i].style.transform="scale(1)";
-			cachePardefautM[i].style.transition="transform .5s ease-in-out";
-		}
-	}
-
-	else if(scrollTop<2360){
-		for(let i=0;i<cachePardefautM.length;i++){
-			cachePardefautM[i].style.transform="scale(0)";
-			cachePardefautM[i].style.transition="transform .5s ease-in-out";
-		}
-	}
-	});
-}
-function contenuVideo()
-{
-	window.addEventListener("scroll",()=>{
-	var cachePardefautV = document.querySelectorAll(".sous-big-image");
-	const {scrollTop} = document.documentElement;
-	
-	if(scrollTop>3250){
-		for(let i=0;i<cachePardefautV.length;i++){
-			cachePardefautV[i].style.transform="scale(1)";
-			cachePardefautV[i].style.transition="transform .5s ease-in-out";
-		}
-	}
-
-	else if(scrollTop<3250){
-		for(let i=0;i<cachePardefautV.length;i++){
-			cachePardefautV[i].style.transform="scale(0)";
-			cachePardefautV[i].style.transition="transform .5s ease-in-out";
-		}
-	}
-	});
-}
-
-function zoomLesImage()
-{
-	$(".cacheParDefaut").mouseover(function(){
-		$(this).css({transform:'scale(1.1)',transition:'transform .8s ease-in-out'});
-	});
-	$(".cacheParDefaut").mouseout(function(){
-		$(this).css({transform:'scale(1)',transition:'transform .8s ease-in-out'});
-	});
+    var span = document.querySelector("#score span");
+    var divScore = document.querySelector("#score");
+    span.onclick=function(){
+        divScore.style.left="-120%";
+        window.location="game.html";
+    };
 }
 
 
-function zoomCartePersonnage()
+
+function defilerQuandClickInput()
 {
-	var photoText = document.querySelectorAll(".cacheParDefaut1 .photo");
-	var contImg = document.querySelectorAll(".cacheParDefaut1");
-	for(let i=0;i<contImg.length;i++)
-	{
-		contImg[i].addEventListener("mouseover",()=>{
-			contImg[i].style.transform="scale(1.1)";
-			contImg[i].style.transition="scale 1s ease-in-out";
-			photoText[i].style.visibility="visible";
-			photoText[i].style.opacity="50%";
-		});
-		contImg[i].addEventListener("mouseout",()=>{
-			contImg[i].style.transform="scale(1)";
-			contImg[i].style.transition="scale 1s ease-in-out";
-			photoText[i].style.visibility="hidden";
-		});
-	} 
+   var valeur = document.documentElement.scrollTop;
+   valeur+=220;
+   document.documentElement.scrollTop=valeur;
 }
 
-
-function showMessage()
+disableInput();
+function disableInput()
 {
-	$("#form").click(function(){
-		$("#messagePop").css({transform:'scale(1)',transition:'transform 1s ease-in-out'});
-	})
-	$("#messagePop").click(function(){
-		$(this).css({transform:'scale(0)',transition:'transform 1s ease-in-out'});
-	})
-	
+    var input = document.querySelectorAll("input[type='checkbox']");
+    for(let i=0;i<input.length;i++)
+    {
+        input[i].onclick=function(e){
+            var name = e.target.name;
+            e.target.parentNode.style.backgroundColor="#19587D";
+            var inputS = document.querySelectorAll("input[name='"+name+"']");
+            for(let j=0;j<inputS.length;j++)
+                inputS[j].disabled="true";
+            defilerQuandClickInput();
+        }
+    }
+}
+
+scrollerLogosReseauSc();
+function scrollerLogosReseauSc()
+{
+    var logos = document.querySelector(".logo-reseaux-sc");
+    window.addEventListener("scroll",()=>{
+    const {scrollTop} = document.documentElement;
+    if(scrollTop>320)
+        logos.style.top=scrollTop+"px";
+    });
 }
